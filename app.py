@@ -33,4 +33,26 @@ def download_youtube_audio(url):
   """Downloads only audio from  youtube using reliable browser impersonation."""
   audio_opts={
     'format':'bestaudio/best',
+    'outtmp1':'temp_audio.%(ext)s',
+    'http_headers':{
+      'user-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64;x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36',
+      'Accept':'*/*',
+      'Referer':'https://www.google.com/',
+      ),
+      'postprocessors':[{
+        'key':'FFmpegExtractAudio',
+        'preferredcodec':'mp3',
+        'preferredquality':'192',
+      }],
+  }
+  with yt_dlp.YoutubeDL(audio_opts) as ydl:
+    ydl.download([url])
+  return"temp_audio.mp3"
+
+def handle_youtube_download(url
+    
+    
+    
+    
+    
     
